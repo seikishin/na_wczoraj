@@ -1,0 +1,83 @@
+<?php echo $this->render('header.phtml'); ?>
+   <h1><?=$this->escape($this->name);?></h1>
+   <h1><?php echo $this->escape($this->title); ?></h1>
+   
+   <h1>Tickety Użytkowników</h1>
+   
+   <!-- może można jakoś zmienić tytuł tabeli w table -->
+<table>
+   <tr>
+      <th>Autor</th>
+      <th>Kategoria</th>
+      <th>Data wysłania</th>
+      <th>Data zamknięcia</th>
+      <th>Status</th>  <!-- status i ip zgła trzeba zamienić w bazie danych na angielskie wyrazy -->
+      <th>Numer IP</th>
+      <th>&nbsp;</th>
+   </tr>
+
+   <?php foreach($this->usertickets as $userticket) : ?>
+   <!-- //if(($this->escape($userticket->id)/2) == 0) {
+            <tr style="background-color: green;"> 
+    } else { 
+            <tr style="background-color: blue;"> 
+  } -->
+   
+   <tr style="background-color: lightblue;">
+      <td><?php echo $this->escape($userticket->author);?></td>
+      <td><?php echo $this->escape($userticket->cathegory);?></td>
+      <td><?php echo $this->escape($userticket->send_data);?></td>
+      <td><?php echo $this->escape($userticket->end_data);?></td>
+      <td><?php echo $this->escape($userticket->status);?></td>
+      <td><?php echo $this->escape($userticket->ip_number);?></td>
+      <td>
+         <a href="<?php echo $this->baseUrl; ?>/index/edit/id/<?php
+            echo $userticket->id;?>">Edit</a>
+         <a href="<?php echo $this->baseUrl; ?>/index/delete/id/<?php
+            echo $userticket->id;?>">Delete</a>
+      </td>
+   </tr>
+   <?php endforeach; ?> 
+
+</table>
+   
+   <h1>Tickety Gości</h1>
+   
+   <!-- może można jakoś zmienić tytuł tabeli w table -->
+   
+<table>
+   <tr>
+      <th>Autor</th>
+      <th>Kategoria</th>
+      <th>Data wysłania</th>
+      <th>Data zamknięcia</th>
+      <th>Status</th>  <!-- status i ip zgła trzeba zamienić w bazie danych na angielskie wyrazy -->
+      <th>Numer IP</th>
+      <th>&nbsp;</th>
+   </tr>
+
+   <?php foreach($this->guesttickets as $guestticket) : ?>
+   <!-- //if(($this->escape($userticket->id)/2) == 0) {
+            <tr style="background-color: green;"> 
+    } else { 
+            <tr style="background-color: blue;"> 
+  } -->
+   
+   <tr style="background-color: lightgreen;">
+      <td><?php echo $this->escape($guestticket->author);?></td>
+      <td><?php echo $this->escape($guestticket->cathegory);?></td>
+      <td><?php echo $this->escape($guestticket->send_data);?></td>
+      <td><?php echo $this->escape($guestticket->end_data);?></td>
+      <td><?php echo $this->escape($guestticket->status);?></td>
+      <td><?php echo $this->escape($guestticket->ip_number);?></td>
+      <td>
+         <a href="<?php echo $this->baseUrl; ?>/index/edit/id/<?php
+            echo $guestticket->id;?>">Edit</a>
+         <a href="<?php echo $this->baseUrl; ?>/index/delete/id/<?php
+            echo $guestticket->id;?>">Delete</a>
+      </td>
+   </tr>
+   <?php endforeach; ?> 
+
+</table> 
+<?php echo $this->render('footer.phtml'); ?>
